@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LODGE YVM — Steps from Sree Padmanabhaswamy Temple</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          maroon: { DEFAULT:'#7A2416', dark:'#57190F' },
+          gold: { DEFAULT:'#B8862F', light:'#D9AE5F' },
+          ivory: '#F2E9D8',
+          teak: '#3B2A1E',
+          green: '#2F4A3C',
+        },
+        fontFamily: {
+          serif: ['"Rozha One"', 'serif'],
+          sans: ['Mukta', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html{scroll-behavior:smooth;}
+  body{font-family:'Mukta',sans-serif;}
+  h1,h2,h3,h4,h5{font-family:'Rozha One',serif;font-weight:400;}
+
+  @keyframes scroll-x{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  .marquee-track{
+    animation:scroll-x 38s linear infinite;
+  }
+  .marquee-wrap:hover .marquee-track{
+    animation-play-state:paused;
+  }
+
+  .hero-carousel{
+    position:relative;
+    overflow:hidden;
+    min-height:600px;
+    background:#090d13;
+  }
+  .hero-carousel .hero-slide-track{
+    position:absolute;
+    inset:0;
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform 1.1s ease-in-out;
+  }
+  .hero-carousel .hero-slide{
+    position:relative;
+    flex:0 0 100%;
+    min-width:100%;
+    background-size:cover;
+    background-position:center center;
+    filter:saturate(0.95) contrast(1.05);
+  }
+  .hero-carousel .hero-slide::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, rgba(6,8,11,0.72) 0%, rgba(6,8,11,0.38) 40%, rgba(6,8,11,0.48) 100%);
+  }
+  .hero-content-wrap{
+    position:relative;
+    z-index:1;
+    min-height:600px;
+    display:flex;
+    align-items:center;
+  }
+  .hero-dots{
+    position:absolute;
+    right:32px;
+    bottom:24px;
+    z-index:2;
+    display:flex;
+    gap:10px;
+  }
+  .hero-dot{
+    width:11px;
+    height:11px;
+    border-radius:9999px;
+    border:1px solid rgba(255,255,255,0.7);
+    background:rgba(255,255,255,0.2);
+    transition:all 0.25s ease;
+  }
+  .hero-dot.active{
+    background:#f0c972;
+    border-color:#f0c972;
+    transform:scale(1.12);
+    box-shadow:0 0 12px rgba(240, 201, 114, 0.8);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{ animation:none; }
+    .hero-carousel .hero-slide-track{ transition:none; }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const track = document.querySelector('.hero-slide-track');
+    const dots = Array.from(document.querySelectorAll('.hero-dot'));
+    const slides = Array.from(document.querySelectorAll('.hero-slide'));
+    if (!track || !slides.length) return;
+
+    let current = 0;
+    const updateSlide = (nextIndex) => {
+      current = (nextIndex + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === current);
+      });
+    };
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => updateSlide(index));
+    });
+
+    setInterval(() => updateSlide(current + 1), 4200);
+  });
+</script>
+</head>
+<body class="bg-ivory text-teak">
+
+<div class="bg-light-300 text-gold-light text-sm py-2">
+  <div class="max-w-5xl mx-auto px-5 flex flex-wrap justify-between gap-x-5 gap-y-1">
+    <span class="opacity-90">Sree Padmanabhaswamy Temple, East Fort, Thiruvananthapuram</span>
+    <span class="opacity-90">Front desk: +91 9061338169</span>
+  </div>
+</div>
+
+<header class="sticky top-0 z-20 bg-ivory border-b border-teak/15">
+  <nav class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
+    <div class="flex items-baseline gap-2.5">
+      <h1 class="text-2xl text-maroon-dark tracking-tight">LODGE YVM</h1>
+      <span class="text-xs text-maroon tracking-wide">EAST FORT</span>
+    </div>
+    <div class="hidden md:flex items-center gap-7">
+      <ul class="flex gap-7 text-[15px]">
+        <li><a href="#rooms" class="border-b border-transparent hover:border-maroon">Rooms</a></li>
+        <li><a href="#amenities" class="border-b border-transparent hover:border-maroon">Amenities</a></li>
+        <li><a href="#food" class="border-b border-transparent hover:border-maroon">Nearby Food</a></li>
+        <li><a href="#location" class="border-b border-transparent hover:border-maroon">Location</a></li>
+      </ul>
+      <a href="tel:+919061338169" class="bg-maroon text-ivory text-sm px-4.5 py-2.5 rounded-sm">Call to Book</a>
+    </div>
+    <a href="tel:+919061338169" class="md:hidden bg-maroon text-ivory text-sm px-4 py-2 rounded-sm">Call</a>
+  </nav>
+</header>
+
+<section class="hero-carousel border-b border-teak/15">
+  <div class="hero-slide-track" aria-label="Temple hero background slideshow">
+    <div class="hero-slide" style="background-image:url('images/hero%20section%20bg/padmanabhaswamy-temple-thiruvananthapuram-kerala-2-attr-hero.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('images/hero%20section%20bg/caption.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('images/hero%20section%20bg/2ARXE6Y.webp');"></div>
+  </div>
+
+  <div class="hero-dots" aria-label="Slideshow navigation">
+    <button class="hero-dot active" type="button" aria-label="Show slide 1"></button>
+    <button class="hero-dot" type="button" aria-label="Show slide 2"></button>
+    <button class="hero-dot" type="button" aria-label="Show slide 3"></button>
+  </div>
+
+  <div class="hero-content-wrap">
+    <div class="relative max-w-5xl mx-auto px-5 grid md:grid-cols-[1.15fr_0.85fr] gap-10 items-center w-full py-16 md:py-20">
+      <div class="text-ivory">
+        <p class="flex items-center gap-2 text-gold-light text-sm mb-3.5">
+      
+          Lodging at the temple's doorstep
+        </p>
+        <h2 class="text-4xl md:text-5xl leading-tight text-ivory max-w-xs md:max-w-sm">Rest ten metres from Sree Padmanabhaswamy Temple</h2>
+        <p class="mt-5 max-w-md text-lg text-[#f5eee2]">A simple, clean lodge in East Fort for pilgrims and travellers  AC and Non-AC rooms, round-the-clock hot water, and the temple's eastern gopuram visible from the street outside.</p>
+        <div class="mt-7 flex flex-wrap gap-4">
+          <a href="#rooms" class="bg-maroon text-ivory text-[15px] px-6 py-3 rounded-sm">View Rooms</a>
+          <a href="#location" class="border border-ivory/80 text-ivory text-[15px] px-6 py-3 rounded-sm">Get Directions</a>
+        </div>
+      </div>
+      <div class="bg-[#1d120d]/80 backdrop-blur-[2px] text-ivory p-7 rounded-sm border border-ivory/10 shadow-lg shadow-black/20">
+        <span class="text-6xl text-gold-light leading-none">10<sub class="text-lg align-middle ml-1.5 text-ivory not-italic">metres to temple</sub></span>
+        <p class="mt-3.5 pt-3.5 border-t border-ivory/20 text-sm text-[#e6d9c2]">Walk out of the lodge and the temple's eastern entrance is directly ahead no auto or taxi needed for darshan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-14 border-b border-teak/15 bg-teak/5">
+  <div class="max-w-5xl mx-auto px-5 mb-6">
+    <p class="text-maroon text-sm">A look inside</p>
+    <h3 class="text-2xl text-maroon-dark mt-1">Our rooms</h3>
+  </div>
+  <div class="marquee-wrap overflow-hidden">
+    <div class="marquee-track flex gap-4 w-max">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=600&q=80" alt="AC room with double bed">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Non-AC room interior">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80" alt="Attached bathroom">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=600&q=80" alt="Lodge corridor">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" alt="Room with wardrobe">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80" alt="Lodge exterior view">
+      <!-- duplicate set for seamless loop -->
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=600&q=80" alt="" aria-hidden="true">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="" aria-hidden="true">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80" alt="" aria-hidden="true">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=600&q=80" alt="" aria-hidden="true">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" alt="" aria-hidden="true">
+      <img class="w-72 h-48 object-cover rounded-sm" src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80" alt="" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section id="rooms" class="py-16 border-b border-teak/15">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="max-w-lg mb-10">
+      <p class="flex items-center gap-2 text-maroon text-sm mb-2.5"> Rooms</p>
+      <h3 class="text-3xl text-maroon-dark">AC and Non-AC, both plainly priced</h3>
+      <p class="mt-3 text-[#4a382b]">Every room comes with a private bathroom and hot water supply. Choose based on your comfort and budget — both room types are on the same floors, close to the staircase and front desk.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-px bg-teak/15 border border-teak/15">
+      <div class="bg-ivory p-8">
+        <span class="inline-block text-xs text-maroon-dark border border-maroon-dark px-2.5 py-1 rounded-sm mb-4">Non-AC</span>
+        <h4 class="text-2xl text-maroon-dark mb-1.5">Non-AC Room</h4>
+        <!-- <p class="text-maroon mb-5">₹ 700 / night <em class="not-italic text-xs text-[#6b5847]">— indicative, confirm at booking</em></p> -->
+        <ul class="space-y-2.5 text-[15px]">
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Ceiling fan and cross ventilation</li>
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Attached bathroom with hot &amp; cold water</li>
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Double cot with mosquito net</li>
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Ideal for short pilgrim stays</li>
+        </ul>
+      </div>
+      <div class="bg-ivory p-8">
+        <span class="inline-block text-xs text-maroon-dark border border-maroon-dark px-2.5 py-1 rounded-sm mb-4">AC</span>
+        <h4 class="text-2xl text-maroon-dark mb-1.5">AC Room</h4>
+        <!-- <p class="text-maroon mb-5">₹ 1200 / night <em class="not-italic text-xs text-[#6b5847]">— indicative, confirm at booking</em></p> -->
+        <ul class="space-y-2.5 text-[15px]">
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Split air conditioning</li>
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Attached bathroom with hot &amp; cold water</li>
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Double cot, wardrobe, and desk</li>
+          <li class="pl-5 relative before:content- before:absolute before:left-0 before:text-gold">Quieter rooms away from the street</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="amenities" class="py-16 border-b border-teak/15">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="max-w-lg mb-10">
+      <p class="flex items-center gap-2 text-maroon text-sm mb-2.5"></span>Amenities</p>
+      <h3 class="text-3xl text-maroon-dark">What's included with every stay</h3>
+    </div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-teak/15 border border-teak/15">
+      <div class="bg-ivory p-6">
+        <span class="block text-xs text-gold mb-2.5">01</span>
+        <h4 class="font-sans font-bold text-[16.5px] mb-1.5">Hot water, all day</h4>
+        <p class="text-sm text-[#5a4a3a]">Hot water runs in every attached bathroom from early morning through night — no request needed.</p>
+      </div>
+      <div class="bg-ivory p-6">
+        <span class="block text-xs text-gold mb-2.5">02</span>
+        <h4 class="font-sans font-bold text-[16.5px] mb-1.5">10 m from the temple</h4>
+        <p class="text-sm text-[#5a4a3a]">The lodge entrance faces the temple's eastern side; darshan queues are a two-minute walk away.</p>
+      </div>
+      <div class="bg-ivory p-6">
+        <span class="block text-xs text-gold mb-2.5">03</span>
+        <h4 class="font-sans font-bold text-[16.5px] mb-1.5">AC &amp; Non-AC options</h4>
+        <p class="text-sm text-[#5a4a3a]">Two room categories on request, so you only pay for the comfort you need.</p>
+      </div>
+      <div class="bg-ivory p-6">
+        <span class="block text-xs text-gold mb-2.5">04</span>
+        <h4 class="font-sans font-bold text-[16.5px] mb-1.5">Free luggage storage</h4>
+        <p class="text-sm text-[#5a4a3a]">Drop bags at the desk before darshan and collect them any time, no charge.</p>
+      </div>
+      <div class="bg-ivory p-6">
+        <span class="block text-xs text-gold mb-2.5">05</span>
+        <h4 class="font-sans font-bold text-[16.5px] mb-1.5">Early check-in</h4>
+        <p class="text-sm text-[#5a4a3a]">Rooms can be readied before sunrise for pilgrims arriving on early trains and buses.</p>
+      </div>
+      <div class="bg-ivory p-6">
+        <span class="block text-xs text-gold mb-2.5">06</span>
+        <h4 class="font-sans font-bold text-[16.5px] mb-1.5">Front desk in English &amp; Malayalam</h4>
+        <p class="text-sm text-[#5a4a3a]">Staff can help with directions, temple timings, and dress-code guidance for darshan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="food" class="py-16 border-b border-teak/15 bg-green text-[#EAE3CF]">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="max-w-lg mb-10">
+      <p class="flex items-center gap-2 text-gold-light text-sm mb-2.5"> Eating nearby</p>
+      <h3 class="text-3xl text-[#F4EFDD]">Veg and non-veg hotels within walking distance</h3>
+      <p class="mt-3 text-[#cfd9cd]">East Fort has both pure-veg and non-veg hotels close by — the desk can point you to whichever suits you and check current opening hours before you walk over.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-9">
+      <div>
+        <h5 class="text-xl text-[#F4EFDD] mb-3.5 pb-2.5 border-b border-[#EAE3CF]/25">Vegetarian</h5>
+        <ul class="space-y-2.5 text-[15px]">
+          <li class="pl-4.5 relative before:content-['•'] before:absolute before:left-0 before:text-gold-light">Traditional Kerala meals hotels, 2–4 min walk</li>
+          <li class="pl-4.5 relative before:content-['•'] before:absolute before:left-0 before:text-gold-light">South Indian breakfast and tiffin counters nearby</li>
+          <li class="pl-4.5 relative before:content-['•'] before:absolute before:left-0 before:text-gold-light">Juice and snack shops around the temple approach road</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-xl text-[#F4EFDD] mb-3.5 pb-2.5 border-b border-[#EAE3CF]/25">Non-Vegetarian</h5>
+        <ul class="space-y-2.5 text-[15px]">
+          <li class="pl-4.5 relative before:content-['•'] before:absolute before:left-0 before:text-gold-light">Non-veg restaurants and hotels available within 5 min walk</li>
+          <li class="pl-4.5 relative before:content-['•'] before:absolute before:left-0 before:text-gold-light">Fish and meal combos served through the day</li>
+          <li class="pl-4.5 relative before:content-['•'] before:absolute before:left-0 before:text-gold-light">Ask the front desk for today's recommended options</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="location" class="py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="max-w-lg mb-10">
+      <p class="flex items-center gap-2 text-maroon text-sm mb-2.5">Location</p>
+      <h3 class="text-3xl text-maroon-dark">Find us in East Fort</h3>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <dl>
+        <dt class="text-xs text-maroon mt-0">Address</dt>
+        <dd class="mt-1 mb-5 text-[17px]">LODGE YVM, near Sree Padmanabhaswamy Temple (East Nada), East Fort, Thiruvananthapuram, Kerala — 695023</dd>
+        <dt class="text-xs text-maroon">Distance to temple</dt>
+        <dd class="mt-1 mb-5 text-[17px]">Approx. 10 metres from the temple's eastern entrance</dd>
+        <dt class="text-xs text-maroon">Nearest landmarks</dt>
+        <dd class="mt-1 mb-5 text-[17px]">Padmanabhaswamy Temple East Nada, East Fort bus stand, Thiruvananthapuram Central Railway Station (approx. 1.5 km)</dd>
+        <dt class="text-xs text-maroon">Phone</dt>
+        <dd class="mt-1 text-[17px]"><a href="tel:+919061338169" class="hover:text-maroon">+91 9061338169</a></dd>
+      </dl>
+      <div class="border border-teak/15 overflow-hidden rounded-sm">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d280.0341347097366!2d76.94197011602104!3d8.482934125288313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bba0055107d7%3A0x995855dd91c1acb8!2sMullackal%20Tower%2C%20S%20Street%20Rd%2C%20Fort%2C%20East%20Fort%2C%20Pazhavangadi%2C%20Thiruvananthapuram%2C%20Kerala%20695023!5e1!3m2!1sen!2sin!4v1789106198573!5m2!1sen!2sin"
+          width="100%" height="380" style="border:0;" loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+          class="block w-full"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-maroon-dark text-[#e6d9c2] pt-14 pb-8">
+  <div class="max-w-5xl mx-auto px-5 grid md:grid-cols-[1.3fr_1fr_1fr] gap-10">
+    <div>
+      <h3 class="text-2xl text-gold-light">LODGE YVM</h3>
+      <p class="mt-3 text-sm max-w-xs text-[#d9cbb2]">A short-stay lodge at the eastern side of Sree Padmanabhaswamy Temple, East Fort, Thiruvananthapuram.</p>
+    </div>
+    <div>
+      <h6 class="text-xs text-gold-light font-sans font-semibold mb-3.5">ON THIS PAGE</h6>
+      <ul class="space-y-2.5 text-[15px]">
+        <li><a href="#rooms" class="hover:text-gold-light">Rooms &amp; Rates</a></li>
+        <li><a href="#amenities" class="hover:text-gold-light">Amenities</a></li>
+        <li><a href="#food" class="hover:text-gold-light">Nearby Food</a></li>
+        <li><a href="#location" class="hover:text-gold-light">Location</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6 class="text-xs text-gold-light font-sans font-semibold mb-3.5">CONTACT</h6>
+      <ul class="space-y-2.5 text-[15px]">
+        <li><a href="tel:+919061338169" class="hover:text-gold-light">+91 9061338169</a></li>
+        <li><a href="mailto:stay@ananthapurilodge.example" class="hover:text-gold-light">kiranraveendran74@gmail.com</a></li>
+        <li>East Fort, Thiruvananthapuram</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-5xl mx-auto px-5 mt-11 pt-5 border-t border-[#e6d9c2]/20 text-xs text-[#b8a789] flex flex-wrap justify-between gap-2">
+    <span>© 2026 LODGE YVM</span>
+    <span>Replace placeholder phone, price and photos before publishing</span>
+  </div>
+</footer>
+
+</body>
+</html>
