@@ -36,6 +36,12 @@
 
     body {
       font-family: 'Mukta', sans-serif;
+      opacity: 0;
+      transition: opacity 0.18s ease-in-out;
+    }
+
+    body.ready {
+      opacity: 1;
     }
 
     h1,
@@ -78,10 +84,27 @@
 
     .marquee-track {
       animation: scroll-x 38s linear infinite;
+      will-change: transform;
     }
 
     .marquee-wrap:hover .marquee-track {
       animation-play-state: paused;
+    }
+
+    .room-card-image {
+      width: min(22rem, 72vw);
+      height: 25rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .room-card-image {
+        width: min(18rem, 78vw);
+        height: 20rem;
+      }
     }
 
     .hero-carousel {
@@ -181,6 +204,10 @@
 
       setInterval(() => updateSlide(current + 1), 4200);
     });
+
+    window.addEventListener('load', function () {
+      document.body.classList.add('ready');
+    });
   </script>
 </head>
 
@@ -266,32 +293,31 @@
     </div>
     <div class="marquee-wrap overflow-hidden">
       <div class="marquee-track flex gap-4 w-max">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room5.png" alt="AC room with double bed">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room6.png" alt="Non-AC room interior">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/toilet1.jpg" alt="AC room with double bed" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room7.png" alt="Non-AC room interior">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room8.jpg" alt="Non-AC room interior">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room9.png" alt="Non-AC room interior">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/toilet3.png" alt="AC room with double bed" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room6.png" alt="Non-AC room interior">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room5.png" alt="AC room with double bed">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/toilet1.jpg" alt="AC room with double bed">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room5.png" alt="AC room with double bed">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/toilet3.png" alt="AC room with double bed">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room5.png" alt="AC room with double bed" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room6.png" alt="Non-AC room interior" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room7.png" alt="Non-AC room interior" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room8.jpg" alt="Non-AC room interior" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room9.png" alt="Non-AC room interior" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room6.png" alt="Non-AC room interior" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room5.png" alt="AC room with double bed" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/toilet1.jpg" alt="AC room with double bed" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/room5.png" alt="AC room with double bed" aria-hidden="true">
-        <img class="w-72 h-48 object-cover rounded-sm" src="images/Rooms/toilet3.png" alt="AC room with double bed" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room5.png" alt="AC room with double bed">
+        <img class="room-card-image" src="images/Rooms/room6.png" alt="Non-AC room interior">
+        <img class="room-card-image" src="images/Rooms/toilet1.jpg" alt="AC room with double bed" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room7.png" alt="Non-AC room interior">
+        <img class="room-card-image" src="images/Rooms/room8.jpg" alt="Non-AC room interior">
+        <img class="room-card-image" src="images/Rooms/room9.png" alt="Non-AC room interior">
+        <img class="room-card-image" src="images/Rooms/toilet3.png" alt="AC room with double bed" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room6.png" alt="Non-AC room interior">
+        <img class="room-card-image" src="images/Rooms/room5.png" alt="AC room with double bed">
+        <img class="room-card-image" src="images/Rooms/toilet1.jpg" alt="AC room with double bed">
+        <img class="room-card-image" src="images/Rooms/room5.png" alt="AC room with double bed">
+        <img class="room-card-image" src="images/Rooms/toilet3.png" alt="AC room with double bed">
+        <img class="room-card-image" src="images/Rooms/room5.png" alt="AC room with double bed" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room6.png" alt="Non-AC room interior" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room7.png" alt="Non-AC room interior" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room8.jpg" alt="Non-AC room interior" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room9.png" alt="Non-AC room interior" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room6.png" alt="Non-AC room interior" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room5.png" alt="AC room with double bed" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/toilet1.jpg" alt="AC room with double bed" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/room5.png" alt="AC room with double bed" aria-hidden="true">
+        <img class="room-card-image" src="images/Rooms/toilet3.png" alt="AC room with double bed" aria-hidden="true">
       </div>
     </div>
   </section>
-
   <section id="rooms" class="py-16 border-b border-teak/15">
     <div class="max-w-5xl mx-auto px-5">
       <div class="max-w-lg mb-10">
